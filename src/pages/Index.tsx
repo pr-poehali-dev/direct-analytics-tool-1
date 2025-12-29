@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import ReportPage from '@/pages/ReportPage';
 import DocsPage from '@/pages/DocsPage';
 import SettingsPage from '@/pages/SettingsPage';
+import LandingPage from '@/pages/LandingPage';
 
 const Index = () => {
+  const [showApp, setShowApp] = useState(false);
   const [activeTab, setActiveTab] = useState('report');
+
+  if (!showApp) {
+    return <LandingPage onGetStarted={() => setShowApp(true)} />;
+  }
 
   return (
     <div className="min-h-screen bg-white">
